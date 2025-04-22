@@ -7,22 +7,29 @@ import static main.Main.users;
 
 public class Engine {
     public static void Authentification() {
-        while (!isUserLogged) {
+        int operation = 0;
+        while (!isUserLogged && operation != 3) {
             System.out.println("Выберите операцию из списка: \n" +
                     "1. Регистрация\n" +
-                    "2. Вход\n");
+                    "2. Вход\n" +
+                    "3. Выход");
             Scanner scanner = new Scanner(System.in);
-            int operation = Integer.parseInt(scanner.nextLine());
+            operation = Integer.parseInt(scanner.nextLine());
             switch (operation) {
                 case 1:
                     System.out.println("Введите логин пользователя");
                     String userLogin = scanner.nextLine();
-                    if (users.containsKey(userLogin)) {
-                        System.out.println("Пользователь с таким логинов уже существует.");
+                    if (users.containsKey(userLogin) || userLogin == null) {
+                        System.out.println("Пользователь с таким логином уже существует.");
                         break;
                     }
-                    System.out.println("Введите пароль");
+                    System.out.println("Введите пароль\n" +
+                            "Пароль должен содержать знаки \"()_-#*$\" и быть не короче 8 символов");
                     String userPassword1 = scanner.nextLine();
+                    if (!isValidPassword(userPassword1)){
+                        System.out.println("Пароль не соответствует требованиям");
+                        break;
+                    }
                     System.out.println("Повторите пароль");
                     String userPassword2 = scanner.nextLine();
                     if (userPassword1.equals(userPassword2)) {
@@ -44,9 +51,15 @@ public class Engine {
                         break;
                     }
                     break;
+                case 3:
+                    break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + operation);
             }
         }
+    }
+
+    public static boolean isValidPassword(String password) {
+        return password != null && password.matches(".*[*$%&?()].*") && password.length() > 7;
     }
 }
