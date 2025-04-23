@@ -1,12 +1,14 @@
 package main;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
-import static main.Main.isUserLogged;
-import static main.Main.users;
+public class Authentication {
+    private static boolean isUserLogged = false;
+    private static final Map<String, String> users = new HashMap<>();
 
-public class Engine {
-    public static void Authentification() {
+    public static void authentication() {
         int operation = 0;
         while (!isUserLogged && operation != 3) {
             System.out.println("Выберите операцию из списка: \n" +
@@ -19,21 +21,21 @@ public class Engine {
                 case 1:
                     System.out.println("Введите логин пользователя");
                     String userLogin = scanner.nextLine();
-                    if (users.containsKey(userLogin) || userLogin == null) {
+                    if (!isValidLogin(userLogin)) {
                         System.out.println("Пользователь с таким логином уже существует.");
                         break;
                     }
                     System.out.println("Введите пароль\n" +
                             "Пароль должен содержать знаки \"()_-#*$\" и быть не короче 8 символов");
-                    String userPassword1 = scanner.nextLine();
-                    if (!isValidPassword(userPassword1)){
+                    String userPassword = scanner.nextLine();
+                    if (!isValidPassword(userPassword)){
                         System.out.println("Пароль не соответствует требованиям");
                         break;
                     }
                     System.out.println("Повторите пароль");
-                    String userPassword2 = scanner.nextLine();
-                    if (userPassword1.equals(userPassword2)) {
-                        users.put(userLogin, userPassword1);
+                    if (userPassword.equals(scanner.nextLine())) {
+                        users.put(userLogin, userPassword);
+                        System.out.println("Регистрация прошла успешно!\n");
                     } else {
                         System.out.println("Пароли не совпадают");
                         break;
@@ -43,8 +45,9 @@ public class Engine {
                     System.out.println("Введите логин пользователя");
                     userLogin = scanner.nextLine();
                     System.out.println("Введите пароль");
-                    userPassword1 = scanner.nextLine();
-                    if (users.get(userLogin).equals(userPassword1)){
+                    userPassword = scanner.nextLine();
+                    if (loginUser(userLogin, userPassword)){
+                        System.out.println("Добро пожаловать" + userLogin);
                         isUserLogged = true;
                     } else {
                         System.out.println("Неверный логин или пароль");
@@ -54,9 +57,17 @@ public class Engine {
                 case 3:
                     break;
                 default:
-                    throw new IllegalStateException("Unexpected value: " + operation);
+                    System.out.println(operation + " - не является допустимым значением");
             }
         }
+    }
+
+    public static boolean loginUser(String login, String userPassword) {
+        return login !=null && users.get(login).equals(userPassword);
+    }
+
+    public static boolean isValidLogin(String login) {
+        return login != null && !users.containsKey(login);
     }
 
     public static boolean isValidPassword(String password) {
