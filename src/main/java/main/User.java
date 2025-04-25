@@ -1,10 +1,54 @@
 package main;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import main.account.BankAccount;
+import main.account.CheckingAccount;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Data
 public class User {
-    private String name;
-    private List<BankAccount> bankAccounts;
+   private String userName;
+   private String userPassword;
+   private List<BankAccount> userBankAccounts;
+
+    public User(String userName, String userPassword) {
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.userBankAccounts = new ArrayList<BankAccount>();
+    }
+
+    @Override
+    public String toString(){
+        return this.userName + " " + this.userPassword + " " + this.userBankAccounts;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public List<BankAccount> getUserBankAccounts() {
+        return userBankAccounts;
+    }
+
+    public void setUserBankAccounts(List<BankAccount> userBankAccounts) {
+        this.userBankAccounts = userBankAccounts;
+    }
+
+    public void addCheckingAccount() {
+        this.userBankAccounts.add(new CheckingAccount());
+    }
+
 }
