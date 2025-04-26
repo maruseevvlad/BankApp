@@ -1,9 +1,8 @@
 package main;
-import lombok.Getter;
-import lombok.Setter;
+
 import main.account.BankAccount;
 import main.account.CheckingAccount;
-
+import main.account.SavingAccount;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +48,16 @@ public class User {
 
     public void addCheckingAccount() {
         this.userBankAccounts.add(new CheckingAccount());
+    }
+
+    public void addSavingAccount() {
+        this.userBankAccounts.add(new SavingAccount());
+    }
+    
+    public void closeAccount(BankAccount bankAccount) {
+        userBankAccounts.remove(bankAccount);
+        //Удаление из списка с номерами аккаунтов всех пользователей.
+        Engine.getUsersAccounts().remove(bankAccount.getAccountNumber());
     }
 
 }

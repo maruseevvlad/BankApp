@@ -18,7 +18,7 @@ public class Transaction<T extends Number> {
     @Override
     public String toString() {
         return "Тип операции: '" + operationType + '\'' +
-                ", Сумма: " + amount +
-                ", Дата и время: " + dateTime + " | ";
+                "; Сумма: " + amount +
+                "; Дата и время: " + dateTime + " | \n";
     }
 }

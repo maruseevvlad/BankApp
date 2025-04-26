@@ -7,8 +7,9 @@ import java.util.HashSet;
 public class Engine {
     private static HashSet<String> usersAccounts = new HashSet<>();
 
-    public static String generateRandomDigits() {
+    public static String generateAccount(String accountType) {
         StringBuilder sb = new StringBuilder();
+        sb.append(accountType);
         do {
             for (int i = 0; i < 7; i++) {
                 int digit = (int) (Math.random() * 10);
@@ -26,4 +27,7 @@ public class Engine {
         return formattedDateTime;
     }
 
+    public static HashSet<String> getUsersAccounts() {
+        return usersAccounts;
+    }
 }

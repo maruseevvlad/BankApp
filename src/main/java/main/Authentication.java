@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Authentication {
     private static boolean isUserLogged = false;
-    private static final Map<String, String> users = new HashMap<>();
+    private static Map<String, String> users = new HashMap<>();
 
     public static void authentication() {
         int operation = 0;

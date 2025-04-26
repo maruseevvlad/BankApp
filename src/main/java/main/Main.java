@@ -11,21 +11,17 @@ public class Main {
 
         User user = new User("maruseev", "1111");
         user.addCheckingAccount();
-        user.addCheckingAccount();
-        System.out.println(user.toString());
+        user.addSavingAccount();
+        System.out.println(user);
 
-        Transaction transaction = new Transaction("Пополнение", 100);
-        Transaction transaction1 = new Transaction("Пополнение", 100);
-        Transaction transaction2 = new Transaction("Пополнение", 100);
-        System.out.println(transaction.toString());
-        System.out.println(transaction1.toString());
-        System.out.println(transaction2.toString());
-        BankAccount userAccount = user.getUserBankAccounts().get(0);
-        BankAccount userAccount1 = user.getUserBankAccounts().get(1);
-        userAccount1.deposit(100);
-        userAccount.deposit(100);
-        userAccount.withdraw(50);
+        BankAccount userAccount1 = user.getUserBankAccounts().get(0);
+        BankAccount userAccount2 = user.getUserBankAccounts().get(1);
+        userAccount1.deposit(1000.5);
+        userAccount1.withdraw(50);
 
-        System.out.println(user.toString());
+        System.out.println(userAccount1.transactionHistory());
+
+        user.closeAccount(userAccount1);
+        System.out.println(user);
     }
 }
