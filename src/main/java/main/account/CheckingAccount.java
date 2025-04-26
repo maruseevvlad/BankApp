@@ -1,11 +1,14 @@
 package main.account;
 
+import java.util.List;
+import main.Engine;
+
 public class CheckingAccount extends BankAccount {
     private String accountNumber;
     private double balance;
 
     public CheckingAccount() {
-        this.accountNumber = generateRandomDigits();
+        this.accountNumber = Engine.generateRandomDigits();
         this. balance = 0.0;
     }
 

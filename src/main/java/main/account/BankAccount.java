@@ -1,6 +1,9 @@
 package main.account;
 
 
+import java.awt.image.PackedColorModel;
+import java.util.List;
+
 public abstract class BankAccount {
     protected String accountNumber;
     protected double balance;
@@ -20,13 +23,5 @@ public abstract class BankAccount {
         this.balance = balance;
     }
 
-    public static String generateRandomDigits() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 7; i++) {
-            int digit = (int) (Math.random() * 10);
-            sb.append(digit);
-        }
-        return sb.toString();
-    }
 }
 
