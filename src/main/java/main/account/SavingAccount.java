@@ -4,16 +4,19 @@ import main.Engine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;
 
 public class SavingAccount extends BankAccount{
     private String accountNumber;
     private double balance;
     private List<Transaction> transactions;
+    private LocalDateTime openDate;
 
     public SavingAccount() {
         this.accountNumber = Engine.generateAccount("SA");
         this.balance = 0.0;
         this.transactions = new ArrayList<>();
+        this.openDate = LocalDateTime.now();
     }
 
     @Override

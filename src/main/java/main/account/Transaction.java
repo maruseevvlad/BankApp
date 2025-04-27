@@ -15,6 +15,10 @@ public class Transaction<T extends Number> {
         this.dateTime = dateTimeFormatter();
     }
 
+    public String getDateTime() {
+        return dateTime;
+    }
+
     @Override
     public String toString() {
         return "Тип операции: '" + operationType + '\'' +

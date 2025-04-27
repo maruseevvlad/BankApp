@@ -1,7 +1,10 @@
 package main.account;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import main.Engine;
 
 public class CheckingAccount extends BankAccount {
@@ -41,6 +44,14 @@ public class CheckingAccount extends BankAccount {
                 .replace("]", "")
                 .replace(",", "");
     }
+
+//    public String transactionHistory(){
+//        return "Операции по счёту "
+//                + accountNumber + ":\n"
+//                + transactions.stream()
+//                .sorted(Comparator.comparing(Transaction::getDateTime))
+//                .collect(Collectors.toList());
+//    }
 
     @Override
     public String toString(){

@@ -26,16 +26,5 @@ public abstract class BankAccount {
         this.balance = balance;
     }
 
-//    public boolean closeAccount(User user, String accountNumber) {
-//        var usersAccounts = Engine.getUsersAccounts();
-//        var userAccounts = user.getUserBankAccounts();
-//        if (usersAccounts.contains(accountNumber) && userAccounts.contains(accountNumber)) {
-//            usersAccounts.remove(accountNumber);
-//            userAccounts.remove(accountNumber);
-//        }
-//
-//        return false;
-//    }
-
 }
 
