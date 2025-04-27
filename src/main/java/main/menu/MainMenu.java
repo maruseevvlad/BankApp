@@ -1,14 +1,13 @@
 package main.menu;
 
-import main.Authentication;
-import main.Main;
 import main.Session;
 import main.User;
+import main.interfaces.Menu;
 
 import java.util.Objects;
 import java.util.Scanner;
 
-public class AuthMenu {
+public class MainMenu {
     private static boolean isUserLogin = false;
     private User currentUser;
 
@@ -18,8 +17,8 @@ public class AuthMenu {
         while (!isUserLogin && !operation.equals("3")) {
             System.out.println("Выберите действие: \n" +
                     "1.Регистрация \n" +
-                    "2.Вход \n" +
-                    "3.Выход");
+                    "2.Вход\n" +
+                    "3.Выйти из приложения");
             operation = scanner.nextLine();
             switch (operation) {
                 case "1":
@@ -49,9 +48,9 @@ public class AuthMenu {
                         break;
                     }
                     System.out.println("Вход успешно выполнен! \n");
-                    Session session = new Session();
-                    session.setCurrentUser(User.getUsers().get(userLogin));
-                    AuthMenu.setIsUserLogin(true);
+                    Session.setCurrentUser(User.getUsers().get(userLogin));
+                    MainMenu.setIsUserLogin(true);
+                    UserMenu.showMenu();
                     break;
                 case "3":
                     break;
@@ -74,7 +73,6 @@ public class AuthMenu {
             return false;
         }
         return !User.getUsers().containsKey(login);
-
     }
 
     public static boolean isCorrectPassword(String password) {
@@ -82,6 +80,10 @@ public class AuthMenu {
     }
 
     public static void setIsUserLogin(boolean isUserLogin) {
-        AuthMenu.isUserLogin = isUserLogin;
+        MainMenu.isUserLogin = isUserLogin;
+    }
+
+    public static boolean isIsUserLogin() {
+        return isUserLogin;
     }
 }

@@ -1,13 +1,17 @@
 package main;
 
 public class Session {
-    private User currentUser;
+    private static User currentUser;
 
-    public User getCurrentUser() {
+    public static void setCurrentUser(User user) {
+        currentUser = user;
+    }
+
+    public static User getCurrentUser() {
         return currentUser;
     }
 
-    public void setCurrentUser(User user) {
-        this.currentUser = user;
+    public static void clearSession() {
+        currentUser = null;
     }
 }

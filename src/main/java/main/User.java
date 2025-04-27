@@ -5,7 +5,6 @@ import main.account.CheckingAccount;
 import main.account.SavingAccount;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 public class User {
@@ -56,6 +55,7 @@ public class User {
 
     public void addCheckingAccount() {
         this.userBankAccounts.add(new CheckingAccount());
+        System.out.println();
     }
 
     public void addSavingAccount(double balance) {

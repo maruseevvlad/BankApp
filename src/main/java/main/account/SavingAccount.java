@@ -20,7 +20,7 @@ public class SavingAccount extends BankAccount{
         this.transactions = new ArrayList<>();
         this.openDate = LocalDateTime.now();
         usersSavingAccounts.add(this);
-
+        System.out.println("Счёт " + accountNumber + " открыт. Начальный балланс: " + balance);
     }
 
     public void addPercentages(int percent) {

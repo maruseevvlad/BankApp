@@ -1,10 +1,7 @@
 package main.account;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-
 import main.Engine;
 
 public class CheckingAccount extends BankAccount {
@@ -16,6 +13,7 @@ public class CheckingAccount extends BankAccount {
         this.accountNumber = Engine.generateAccount("CA");
         this.balance = 0.0;
         this.transactions = new ArrayList<>();
+        System.out.println("Счёт " + accountNumber + " открыт.");
     }
 
     @Override

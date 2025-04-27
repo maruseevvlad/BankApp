@@ -1,7 +1,5 @@
 package main.account;
 
-import java.time.LocalDateTime;
-
 import static main.Engine.dateTimeFormatter;
 
 public class Transaction<T extends Number> {
