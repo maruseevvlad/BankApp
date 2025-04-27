@@ -1,10 +1,7 @@
 package main;
 import main.account.BankAccount;
-import main.account.CheckingAccount;
-import main.account.Transaction;
+import main.account.SavingAccount;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
     static TimeNow timeNow;
@@ -14,27 +11,25 @@ public class Main {
         threadTime.setDaemon(true);
         threadTime.start();
 
-//        Thread appLive = new Thread(timeNow);
-//        appLive.setDaemon(true);
-//        appLive.start();
-//        System.out.println(timeNow);
-
         User user = new User("maruseev", "1111");
-        user.addCheckingAccount();
-        user.addSavingAccount();
+//        user.addCheckingAccount();
+        user.addSavingAccount(100);
         System.out.println(user);
 
-        BankAccount userAccount1 = user.getUserBankAccounts().get(0);
-        BankAccount userAccount2 = user.getUserBankAccounts().get(1);
-        userAccount1.deposit(1000);
-        userAccount1.withdraw(100);
+//        BankAccount CA = user.getUserBankAccounts().get(0);
+        SavingAccount SA = (SavingAccount) user.getUserBankAccounts().get(0);
+//        CA.deposit(1000);
+//        CA.withdraw(100);
+
+        SA.deposit(100);
+        SA.addPercentages(10);
 
 
 
 
-        System.out.println(userAccount1.transactionHistory());
+        System.out.println(SA.transactionHistory());
 
-        user.closeAccount(userAccount1);
+        user.closeAccount(SA);
         System.out.println(user);
     }
 }

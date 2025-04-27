@@ -50,8 +50,8 @@ public class User {
         this.userBankAccounts.add(new CheckingAccount());
     }
 
-    public void addSavingAccount() {
-        this.userBankAccounts.add(new SavingAccount());
+    public void addSavingAccount(double balance) {
+        this.userBankAccounts.add(new SavingAccount(balance));
     }
 
     public void closeAccount(BankAccount bankAccount) {

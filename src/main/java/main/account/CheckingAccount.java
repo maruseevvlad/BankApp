@@ -33,6 +33,7 @@ public class CheckingAccount extends BankAccount {
             System.out.println("Со счёта: " + accountNumber + " списано " + amount);
             return true;
         }
+        System.out.println("На счёте недостаточно средств.");
         return false;
     }
 

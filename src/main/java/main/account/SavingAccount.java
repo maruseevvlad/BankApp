@@ -12,11 +12,24 @@ public class SavingAccount extends BankAccount{
     private List<Transaction> transactions;
     private LocalDateTime openDate;
 
-    public SavingAccount() {
+    public SavingAccount(double balance) {
         this.accountNumber = Engine.generateAccount("SA");
-        this.balance = 0.0;
+        this.balance = balance;
         this.transactions = new ArrayList<>();
         this.openDate = LocalDateTime.now();
+    }
+
+    public void addPercentages(int percent) {
+        if (balance > 0.0) {
+            double oldBalance = balance;
+            double multiplier = 1 + percent / 100.0;
+            balance = Math.round(balance * multiplier * 100.0) / 100.0;
+            double percentages = balance - oldBalance;
+            System.out.println("На счёт начислены проценты по текущему остатку на сумму: "
+                    + percentages + "\n"
+                    + "Текущий баланс: " + balance);  // Исправлена опечатка в слове "баланс"
+            transactions.add(new Transaction("Начисление процентов", percentages));
+        }
     }
 
     @Override
