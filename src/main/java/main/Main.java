@@ -1,35 +1,41 @@
 package main;
-import main.account.BankAccount;
-import main.account.SavingAccount;
+import main.menu.AuthMenu;
+import main.menu.UserMenu;
 
 
 public class Main {
     static TimeNow timeNow;
+    private User currentUser;
     public static void main(String[] args) {
         timeNow = new TimeNow();
         Thread threadTime = new Thread(timeNow);
         threadTime.setDaemon(true);
         threadTime.start();
 
-        User user = new User("maruseev", "1111");
-//        user.addCheckingAccount();
-        user.addSavingAccount(100);
-        System.out.println(user);
+        AuthMenu.showMenu();
 
-//        BankAccount CA = user.getUserBankAccounts().get(0);
-        SavingAccount SA = (SavingAccount) user.getUserBankAccounts().get(0);
-//        CA.deposit(1000);
-//        CA.withdraw(100);
-
-        SA.deposit(100);
-        SA.addPercentages(10);
-
-
-
-
-        System.out.println(SA.transactionHistory());
-
-        user.closeAccount(SA);
-        System.out.println(user);
     }
+
+
 }
+
+
+
+
+
+//User user = new User("maruseev", "1111");
+////        user.addCheckingAccount();
+//            user.addSavingAccount(100);
+//
+////        BankAccount CA = user.getUserBankAccounts().get(0);
+//            SavingAccount SA = (SavingAccount) user.getUserBankAccounts().get(0);
+////        CA.deposit(1000);
+////        CA.withdraw(100);
+////            SA.withdraw(50);
+////        user.closeAccount(SA);
+//            System.out.println(user);
+////        System.out.println("Список всех аккаунтов " + Engine.getUsersAccounts());
+//
+//            System.out.println("Для выхода нажми 0");
+//            Scanner scanner = new Scanner(System.in);
+//            operation = scanner.nextInt();

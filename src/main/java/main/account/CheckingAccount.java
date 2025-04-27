@@ -58,4 +58,9 @@ public class CheckingAccount extends BankAccount {
     public String toString(){
         return this.accountNumber + " " + this.balance;
     }
+
+    @Override
+    public String getAccountNumber() {
+        return accountNumber;
+    }
 }
