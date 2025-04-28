@@ -44,14 +44,6 @@ public class CheckingAccount extends BankAccount {
                 .replace(",", "");
     }
 
-//    public String transactionHistory(){
-//        return "Операции по счёту "
-//                + accountNumber + ":\n"
-//                + transactions.stream()
-//                .sorted(Comparator.comparing(Transaction::getDateTime))
-//                .collect(Collectors.toList());
-//    }
-
     @Override
     public String toString(){
         return this.accountNumber + " " + this.balance;

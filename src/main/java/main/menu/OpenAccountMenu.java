@@ -2,7 +2,6 @@ package main.menu;
 
 import main.Session;
 import main.User;
-
 import java.util.Scanner;
 
 public class OpenAccountMenu {

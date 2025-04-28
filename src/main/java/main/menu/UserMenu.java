@@ -2,7 +2,6 @@ package main.menu;
 
 import main.Session;
 import main.User;
-
 import java.util.Scanner;
 
 public class UserMenu {
@@ -28,6 +27,6 @@ public class UserMenu {
                     return;
                 default: System.out.println(operation + " - не является допустимым значением");
             }
-        } while (operation != "3");
+        } while (!operation.equals("3"));
     }
 }

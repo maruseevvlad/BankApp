@@ -41,25 +41,33 @@ public class User {
         return userPassword;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
     public List<BankAccount> getUserBankAccounts() {
         return userBankAccounts;
     }
 
-    public void setUserBankAccounts(List<BankAccount> userBankAccounts) {
-        this.userBankAccounts = userBankAccounts;
-    }
-
     public void addCheckingAccount() {
-        this.userBankAccounts.add(new CheckingAccount());
-        System.out.println();
+        List<String> userAccountsNumbers = this.getUserBankAccounts().stream()
+                .map(e -> e.getAccountNumber())
+                .filter(e -> e.startsWith("CA"))
+                .toList();
+        if (userAccountsNumbers.isEmpty()) {
+            this.userBankAccounts.add(new CheckingAccount());
+        } else {
+            System.out.println("У вас уже открыт лицевой счёт.");
+        }
     }
 
     public void addSavingAccount(double balance) {
-        this.userBankAccounts.add(new SavingAccount(balance));
+        List<String> userAccountsNumbers = this.getUserBankAccounts().stream()
+                .map(e -> e.getAccountNumber())
+                .filter(e -> e.startsWith("SA"))
+                .toList();
+
+        if (userAccountsNumbers.size() <= 1) {
+            this.userBankAccounts.add(new SavingAccount(balance));
+        } else {
+            System.out.println("У вас достигнут лимит по сберегательным счетам.");
+        }
     }
 
     public void closeAccount(BankAccount bankAccount) {
@@ -68,5 +76,4 @@ public class User {
         Engine.getUsersAccounts().remove(bankAccount.getAccountNumber());
         System.out.println("Счёт: " + bankAccount.getAccountNumber() + " успешно удален.");
     }
-
 }

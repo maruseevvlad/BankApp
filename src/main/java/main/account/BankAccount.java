@@ -1,8 +1,5 @@
 package main.account;
 
-import main.Engine;
-import main.User;
-
 import java.util.List;
 
 public abstract class BankAccount {
@@ -21,11 +18,6 @@ public abstract class BankAccount {
     public String getAccountNumber() {
         return accountNumber;
     }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
 
 }
 

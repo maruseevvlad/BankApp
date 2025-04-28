@@ -2,14 +2,11 @@ package main.menu;
 
 import main.Session;
 import main.User;
-import main.interfaces.Menu;
-
 import java.util.Objects;
 import java.util.Scanner;
 
 public class MainMenu {
     private static boolean isUserLogin = false;
-    private User currentUser;
 
     public static void showMenu() {
         Scanner scanner = new Scanner(System.in);
@@ -81,9 +78,5 @@ public class MainMenu {
 
     public static void setIsUserLogin(boolean isUserLogin) {
         MainMenu.isUserLogin = isUserLogin;
-    }
-
-    public static boolean isIsUserLogin() {
-        return isUserLogin;
     }
 }
