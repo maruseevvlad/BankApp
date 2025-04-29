@@ -14,6 +14,7 @@ public class CheckingAccount extends BankAccount {
         this.balance = 0.0;
         this.transactions = new ArrayList<>();
         System.out.println("Счёт " + accountNumber + " открыт.");
+        this.transactions.add(new Transaction<>("Открытие счёта", this.balance));
     }
 
     @Override
@@ -52,5 +53,10 @@ public class CheckingAccount extends BankAccount {
     @Override
     public String getAccountNumber() {
         return accountNumber;
+    }
+
+    @Override
+    public double getBalance() {
+        return balance;
     }
 }

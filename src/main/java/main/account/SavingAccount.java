@@ -20,6 +20,7 @@ public class SavingAccount extends BankAccount{
         this.transactions = new ArrayList<>();
         this.openDate = LocalDateTime.now();
         usersSavingAccounts.add(this);
+        this.transactions.add(new Transaction<>("Открытие счёта", this.balance));
         System.out.println("Счёт " + accountNumber + " открыт. Начальный балланс: " + balance);
     }
 
@@ -28,10 +29,7 @@ public class SavingAccount extends BankAccount{
             double oldBalance = balance;
             double multiplier = 1 + percent / 100.0;
             balance = Math.round(balance * multiplier * 100.0) / 100.0;
-            double percentages = balance - oldBalance;
-//            System.out.println("На счёт начислены проценты по минимальному 20 секундному остатку на сумму: "
-//                    + percentages + "\n"
-//                    + "Текущий баланс: " + balance);
+            double percentages = Math.round((balance - oldBalance) * 100.0) / 100.0;
             transactions.add(new Transaction("Начисление процентов", percentages));
         }
     }
@@ -85,5 +83,10 @@ public class SavingAccount extends BankAccount{
 
     public static List<SavingAccount> getUsersSavingAccounts() {
         return usersSavingAccounts;
+    }
+
+    @Override
+    public double getBalance() {
+        return balance;
     }
 }

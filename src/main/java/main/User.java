@@ -71,9 +71,13 @@ public class User {
     }
 
     public void closeAccount(BankAccount bankAccount) {
-        userBankAccounts.remove(bankAccount);
-        //Удаление аккаунта из списка с номерами аккаунтов всех пользователей.
-        Engine.getUsersAccounts().remove(bankAccount.getAccountNumber());
-        System.out.println("Счёт: " + bankAccount.getAccountNumber() + " успешно удален.");
+        if (bankAccount.getBalance() > 0) {
+            System.out.println("Снимите или переведите все денежные средства для закрытия счёта.");
+        } else {
+            userBankAccounts.remove(bankAccount);
+            //Удаление аккаунта из списка с номерами аккаунтов всех пользователей.
+            Engine.getUsersAccounts().remove(bankAccount.getAccountNumber());
+            System.out.println("Счёт: " + bankAccount.getAccountNumber() + " успешно удален.");
+        }
     }
 }
