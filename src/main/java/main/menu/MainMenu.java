@@ -62,7 +62,7 @@ public class MainMenu {
         }
         User user = User.getUsers().get(login);
         return user != null
-                && Objects.equals(user.getUserPassword(), password);
+                && User.verifyPassword(password, user);
     }
 
     public static boolean isCorrectLogin(String login) {

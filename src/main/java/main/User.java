@@ -6,6 +6,7 @@ import main.account.SavingAccount;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class User {
    private String userName;
@@ -15,8 +16,8 @@ public class User {
 
     public User(String userName, String userPassword) {
         this.userName = userName;
-        this.userPassword = userPassword;
-        this.userBankAccounts = new ArrayList<BankAccount>();
+        this.userPassword = hashPassword(userPassword);
+        this.userBankAccounts = new ArrayList<>();
         users.put(userName, this);
     }
 
@@ -79,5 +80,17 @@ public class User {
             Engine.getUsersAccounts().remove(bankAccount.getAccountNumber());
             System.out.println("Счёт: " + bankAccount.getAccountNumber() + " успешно удален.");
         }
+    }
+
+    private String hashPassword(String plainTextPassword) {
+        return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
+    }
+
+    public static boolean verifyPassword(String plainTextPassword, User user) {
+        return BCrypt.checkpw(plainTextPassword, user.getPasswordHash());
+    }
+
+    public String getPasswordHash() {
+        return userPassword;
     }
 }
