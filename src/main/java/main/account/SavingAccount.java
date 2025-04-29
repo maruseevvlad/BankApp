@@ -1,10 +1,11 @@
 package main.account;
 
 import main.Engine;
+import main.Transaction;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 public class SavingAccount extends BankAccount{
     private String accountNumber;
@@ -15,7 +16,7 @@ public class SavingAccount extends BankAccount{
     private static List<SavingAccount> usersSavingAccounts = new ArrayList<>();
 
     public SavingAccount(double balance) {
-        this.accountNumber = Engine.generateAccount("SA");
+        this.accountNumber = Engine.generateAccount("SA", Engine.getACCOUNTNUMBERLENGTH());
         this.balance = balance;
         this.transactions = new ArrayList<>();
         this.openDate = LocalDateTime.now();
@@ -62,6 +63,11 @@ public class SavingAccount extends BankAccount{
                 .replace("[", "")
                 .replace("]", "")
                 .replace(",", "");
+    }
+
+    @Override
+    public void addDebitCard(String cardPin) {
+
     }
 
     public String toString(){

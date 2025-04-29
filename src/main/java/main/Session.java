@@ -1,10 +1,12 @@
 package main;
 
 import main.account.BankAccount;
+import main.card.Card;
 
 public class Session {
     private static User currentUser;
     private static BankAccount currentAccount;
+    private static Card currentCard;
 
     public static BankAccount getCurrentAccount() {
         return currentAccount;
@@ -28,5 +30,17 @@ public class Session {
 
     public static void clearSession() {
         currentUser = null;
+    }
+
+    public static Card getCurrentCard() {
+        return currentCard;
+    }
+
+    public static void setCurrentCard(Card currentCard) {
+        Session.currentCard = currentCard;
+    }
+
+    public static void clearCardSession() {
+        currentCard = null;
     }
 }

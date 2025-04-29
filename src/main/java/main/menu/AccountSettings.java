@@ -16,9 +16,11 @@ public class AccountSettings {
                     "Выберите операцию со счётом из списка: \n" +
                     "1. Пополнить счёт \n" +
                     "2. Снять деньги со счёта \n" +
-                    "3. История операций \n" +
-                    "4. Закрыть счёт \n" +
-                    "5. Назад");
+                    "3. Открыть дебетовую или кредитную карту \n" +
+                    "4. Операции с картами \n" +
+                    "5. История операций \n" +
+                    "6. Закрыть счёт \n" +
+                    "7. Назад");
             operation = scanner.nextLine();
             switch (operation) {
                 case "1":
@@ -29,18 +31,22 @@ public class AccountSettings {
                     System.out.println("Какую сумму вы хотите списать со счёта?");
                     currentAccount.withdraw(Double.parseDouble(scanner.nextLine()));
                     break;
-                case "3":
+                case "3": AddCard.showMenu();
+                    break;
+                case "4": SelectCard.showMenu();
+                    break;
+                case "5":
                     System.out.println(currentAccount.transactionHistory());
                     break;
-                case "4":
+                case "6":
                     currentUser.closeAccount(currentAccount);
                     Session.clearAccountSession();
                     return;
-                case "5":
+                case "7":
                     Session.clearAccountSession();
                     break;
                 default: System.out.println(operation + " - не является допустимым значением");
             }
-        } while (!operation.equals("5"));
+        } while (!operation.equals("7"));
     }
 }

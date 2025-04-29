@@ -1,10 +1,12 @@
-package main.account;
+package main.card;
 
-public class CreditCard<T extends BankAccount> extends Card<T>{
+import main.account.BankAccount;
+
+public class CreditCard<T extends BankAccount> extends Card<T> {
     private double creditLimit = 1000;
 
     @Override
-    public boolean pay(double amount) {
+    public boolean pay(double amount, String cardPin) {
         if (linkedAccount.getBalance() + creditLimit >= amount) {
             linkedAccount.withdraw(amount);
             return true;
