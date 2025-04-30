@@ -15,9 +15,14 @@ public abstract class BankAccount {
     public abstract boolean withdraw(double amount);
     public abstract String transactionHistory();
     public abstract void addDebitCard(String cardPin);
+    public abstract void addCreditCard(String cardPin);
 
     public double getBalance() {
         return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public String getAccountNumber() {

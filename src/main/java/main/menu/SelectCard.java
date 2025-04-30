@@ -23,7 +23,7 @@ public class SelectCard {
             operation = scanner.nextLine();
 
             if ("exit".equalsIgnoreCase(operation)) {
-                Session.clearAccountSession();
+                Session.clearCardSession();
                 break;
             }
 
@@ -40,7 +40,7 @@ public class SelectCard {
         var bankCards = Session.getCurrentAccount().getCards();
         var j = 1;
         for (var i = 0; i < bankCards.size(); i++){
-            System.out.println(j + ". " + bankCards.get(i));
+            System.out.println(j + ". " + bankCards.get(i) + Session.getCurrentAccount().getBalance());
             j++;
         }
     }

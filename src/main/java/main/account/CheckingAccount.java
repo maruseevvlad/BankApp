@@ -7,6 +7,7 @@ import main.Engine;
 import main.Transaction;
 import main.User;
 import main.card.Card;
+import main.card.CreditCard;
 import main.card.DebitCard;
 
 public class CheckingAccount extends BankAccount {
@@ -72,8 +73,21 @@ public class CheckingAccount extends BankAccount {
     }
 
     public void addDebitCard(String cardPin) {
-        this.cards.add(new DebitCard(cardPin));
-        transactions.add(new Transaction<>("Привязка карты " + cards.getLast()));
+        if (cardPin.matches("[1-9]{4}")) {
+            this.cards.add(new DebitCard(cardPin));
+            transactions.add(new Transaction<>("Привязка карты " + cards.getLast()));
+        } else {
+            System.out.println("ПИН-код должен содержать цифры от 1 до 9 и быть длинной 4 символа. ");
+        }
+    }
+
+    public void addCreditCard(String cardPin) {
+        if (cardPin.matches("[1-9]{4}")) {
+            this.cards.add(new CreditCard(cardPin));
+            transactions.add(new Transaction<>("Привязка карты " + cards.getLast()));
+        } else {
+            System.out.println("ПИН-код должен содержать цифры от 1 до 9 и быть длинной 4 символа. ");
+        }
     }
 
     public List<Transaction> getTransactions() {

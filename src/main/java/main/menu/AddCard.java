@@ -1,11 +1,8 @@
 package main.menu;
 
 import main.Session;
-import main.User;
 import main.account.BankAccount;
-import main.account.CheckingAccount;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class AddCard {
@@ -30,7 +27,8 @@ public class AddCard {
                     currentAccount.addDebitCard(scanner.nextLine());
                     break;
                 case "2":
-                   //add creditCard
+                    System.out.println("Введите пин код для новой карты");
+                    currentAccount.addCreditCard(scanner.nextLine());
                     break;
                 case "3":
                     return;

@@ -20,8 +20,6 @@ public class DebitCard<T extends BankAccount> extends Card<T> {
     @Override
     public boolean pay(double amount, String cardPin) {
         if (linkedAccount.getBalance() >= amount && cardPin.equals(this.getCardPin())) {
-            linkedAccount.getTransactions().add(new Transaction("Списание", amount));
-            System.out.println("Со счёта: " + linkedAccount.getAccountNumber() + " списано " + amount);
             return linkedAccount.withdraw(amount);
         }
         System.out.println("На счёте недостаточно средств.");

@@ -70,6 +70,11 @@ public class SavingAccount extends BankAccount{
 
     }
 
+    @Override
+    public void addCreditCard(String cardPin) {
+
+    }
+
     public String toString(){
         return this.accountNumber + " " + this.balance;
     }

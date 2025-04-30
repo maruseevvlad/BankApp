@@ -9,6 +9,7 @@ public abstract class Card<T extends BankAccount> {
     protected String cardPin;
     protected  T linkedAccount;
     private static HashMap<String, Card> accountCards = new HashMap<>();
+    protected double creditLimit;
 
     public abstract boolean pay(double amount, String cardPin);
 
@@ -26,5 +27,12 @@ public abstract class Card<T extends BankAccount> {
 
     public static HashMap<String, Card> getAccountCards() {
         return accountCards;
+    }
+
+    public double getCreditLimit() {
+        return creditLimit;
+    }
+
+    public void repayDebt() {
     }
 }
